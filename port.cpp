@@ -53,6 +53,7 @@ namespace gpio
     _used++;
   }
 
+#ifdef STREAM_H_
   com::ostream& operator << (com::ostream& out, gpio::port& port)
   {
     out << "GPIO";
@@ -80,6 +81,7 @@ namespace gpio
 
     return out;
   }
+#endif
 } /* namespace gpio */
 
 

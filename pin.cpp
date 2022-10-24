@@ -39,6 +39,7 @@ namespace gpio
     return LOW;
   }
 
+#ifdef STREAM_H_
   com::ostream& operator << (com::ostream& out, gpio::pin& pin)
   {
     int i = (int)pin.getpin();
@@ -54,6 +55,7 @@ namespace gpio
     out << (*pin.getport()) << "." << n;
     return out;
   }
+#endif
 } /* namespace gpio */
 
 

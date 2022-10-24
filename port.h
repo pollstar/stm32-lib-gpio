@@ -9,7 +9,7 @@
 #define PORT_H_
 
 #include "main.h"
-#include "stream.h"
+//#include "stream.h"
 
 namespace gpio
 {
@@ -26,7 +26,9 @@ namespace gpio
     mutable GPIO_TypeDef *_port;
     mutable uint32_t _used = 0;
 
+#ifdef STREAM_H_
     friend com::ostream& operator << (com::ostream& out, gpio::port& port);
+#endif
   };
 
 #ifdef GPIOA

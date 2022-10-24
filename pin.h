@@ -63,7 +63,9 @@ namespace gpio
     gpio::port *const _port;
     uint32_t _pin;
 
+#ifdef STREAM_H_
     friend com::ostream& operator << (com::ostream& out, gpio::pin& pin);
+#endif
   };
 
 } /* namespace gpio */

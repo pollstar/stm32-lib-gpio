@@ -5,14 +5,9 @@
  *      Author: Pavel Starovoitov
  */
 
-#ifndef GPIOS_H_
-#define GPIOS_H_
+#ifndef GPIO_H_
+#define GPIO_H_
 
 #include "output.h"
 
-namespace gpio
-{
-
-}
-
-#endif /* GPIOS_H_ */
+#endif /* GPIO_H_ */
