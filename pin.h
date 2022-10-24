@@ -56,8 +56,7 @@ namespace gpio
     {
       return _pin;
     }
-
-    ;
+    bool operator !=(gpio::pin& pin);
 
   protected:
     gpio::port *const _port;

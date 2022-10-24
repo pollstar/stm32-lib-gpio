@@ -8,6 +8,8 @@
 #ifndef GPIO_H_
 #define GPIO_H_
 
+#define CPP_LIB_STM32
+
 #include "output.h"
 
 #endif /* GPIO_H_ */

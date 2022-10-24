@@ -1,7 +1,7 @@
 /*
  * portgpio.cpp
  *
- *  Created on: 19 окт. 2022 г.
+ *  Created on: 19 oct 2022
  *      Author: Pavel Starovoitov
  */
 

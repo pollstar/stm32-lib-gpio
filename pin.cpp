@@ -56,6 +56,13 @@ namespace gpio
     return out;
   }
 #endif
+
+  bool
+  pin::operator != (gpio::pin &pin)
+  {
+    return !((pin._pin == _pin) && (pin._port == _port));
+  }
+
 } /* namespace gpio */
 
 
