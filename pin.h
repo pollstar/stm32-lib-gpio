@@ -46,8 +46,8 @@ namespace gpio
 
     void init (LL_GPIO_InitTypeDef *GPIO_InitStruct);
     virtual void set (void) const;
-    void reset (void)const ;
-    gpio::state get (void);
+    virtual void reset (void)const ;
+    virtual gpio::state get (void);
     inline port* getport (void) const
     {
       return _port;

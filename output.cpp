@@ -1,7 +1,7 @@
 /*
  * output.cpp
  *
- *  Created on: 19 окт. 2022 г.
+ *  Created on: 19 oct 2022
  *      Author: Pavel Starovoitov
  */
 
@@ -10,18 +10,20 @@
 namespace gpio
 {
 
-  output::output (gpio::port *const port, const uint32_t pin) : pin::pin(port, pin)
+  output::output (gpio::port *const port, const uint32_t pin, const uint32_t speed,
+	  const uint32_t outputType, const uint32_t pull) : pin::pin(port, pin)
   {
-    LL_GPIO_InitTypeDef GPIO_InitStruct = {0};
-
-    GPIO_InitStruct.Mode = LL_GPIO_MODE_OUTPUT;
-    GPIO_InitStruct.Speed = LL_GPIO_SPEED_FREQ_LOW;
-    GPIO_InitStruct.OutputType = LL_GPIO_OUTPUT_PUSHPULL;
-    GPIO_InitStruct.Pull = LL_GPIO_PULL_NO;
+    LL_GPIO_InitTypeDef GPIO_InitStruct = {
+	Pin: _pin,
+	Mode: LL_GPIO_MODE_OUTPUT,
+	Speed: speed,
+	OutputType: outputType,
+	Pull: pull
+    };
 
     init(&GPIO_InitStruct);
 
-}
+  }
 
   output::~output ()
   {
