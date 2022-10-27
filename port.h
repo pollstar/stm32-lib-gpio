@@ -8,8 +8,17 @@
 #ifndef PORT_H_
 #define PORT_H_
 
-#include "main.h"
-//#include "stream.h"
+#ifdef USE_FULL_LL_DRIVER
+#include "stm32f0xx_ll_gpio.h"
+#include "stm32f0xx_ll_bus.h"
+#elif USE_HAL_DRIVER
+#include "stm32f0xx_hal_gpio.h"
+#endif
+
+#ifdef USE_STREAM
+#include "stream.h"
+#endif
+
 
 namespace gpio
 {
@@ -26,7 +35,7 @@ namespace gpio
     mutable GPIO_TypeDef *_port;
     mutable uint32_t _used = 0;
 
-#ifdef STREAM_H_
+#ifdef USE_STREAM
     friend com::ostream& operator << (com::ostream& out, gpio::port& port);
 #endif
   };

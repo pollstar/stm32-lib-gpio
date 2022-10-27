@@ -5,7 +5,7 @@
  *      Author: Pavel Starovoitov
  */
 
-#include <port.h>
+#include "port.h"
 
 namespace gpio
 {
@@ -32,28 +32,34 @@ namespace gpio
   {
     if (_used == 0)
     {
+#ifdef USE_FULL_LL_DRIVER
 	if (_port == GPIOA) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
-      #ifdef GPIOB
+#ifdef GPIOB
 	else if (_port == GPIOB) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
-      #endif
-      #ifdef GPIOC
+#endif
+#ifdef GPIOC
 	else if (_port == GPIOC) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOC);
-      #endif
-      #ifdef GPIOD
+#endif
+#ifdef GPIOD
 	else if (_port == GPIOD) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOD);
-      #endif
-      #ifdef GPIOE
+#endif
+#ifdef GPIOE
 	else if (_port == GPIOE) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOE);
-      #endif
-      #ifdef GPIOF
+#endif
+#ifdef GPIOF
 	else if (_port == GPIOF) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOF);
-      #endif
+#endif
+#elif USE_HAL_DRIVER
+  #error Need to implement the init method
+#else
+  #error Need to implement the init method
+#endif
     }
 
     _used++;
   }
 
-#ifdef STREAM_H_
+#ifdef USE_STREAM
   com::ostream& operator << (com::ostream& out, gpio::port& port)
   {
     out << "GPIO";
