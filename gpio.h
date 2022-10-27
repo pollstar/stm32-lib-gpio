@@ -9,7 +9,9 @@
 #define GPIO_H_
 
 #define CPP_LIB_STM32
+#include "stm32f0xx.h"
 
 #include "output.h"
+#include "stream.h"
 
 #endif /* GPIO_H_ */
