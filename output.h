@@ -12,10 +12,6 @@
 
 namespace gpio
 {
-
-  const uint32_t speed_low = LL_GPIO_SPEED_FREQ_LOW;
-  const uint32_t speed_medium = LL_GPIO_SPEED_FREQ_MEDIUM;
-  const uint32_t speed_high = LL_GPIO_SPEED_FREQ_HIGH;
   /*
    *
    */

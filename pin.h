@@ -34,6 +34,10 @@ namespace gpio
   const uint32_t pin13 = LL_GPIO_PIN_13;
   const uint32_t pin14 = LL_GPIO_PIN_14;
   const uint32_t pin15 = LL_GPIO_PIN_15;
+
+  const uint32_t speed_low = LL_GPIO_SPEED_FREQ_LOW;
+  const uint32_t speed_medium = LL_GPIO_SPEED_FREQ_MEDIUM;
+  const uint32_t speed_high = LL_GPIO_SPEED_FREQ_HIGH;
   /*
    *
    */
