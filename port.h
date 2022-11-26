@@ -19,6 +19,12 @@
 #include "stream.h"
 #endif
 
+#define gpioa porta
+#define gpiob portb
+#define gpioc portc
+#define gpiod portd
+#define gpioe porte
+#define gpiof portf
 
 namespace gpio
 {
@@ -41,22 +47,22 @@ namespace gpio
   };
 
 #ifdef GPIOA
-  extern gpio::port *const gpioa;
+  extern gpio::port *const porta;
 #endif
 #ifdef GPIOB
-  extern gpio::port *const gpiob;
+  extern gpio::port *const portb;
 #endif
 #ifdef GPIOC
-  extern gpio::port *const gpioc;
+  extern gpio::port *const portc;
 #endif
 #ifdef GPIOD
-  extern gpio::port *const gpiod;
+  extern gpio::port *const portd;
 #endif
 #ifdef GPIOE
-  extern gpio::port *const gpioe;
+  extern gpio::port *const porte;
 #endif
 #ifdef GPIOF
-  extern gpio::port *const gpiof;
+  extern gpio::port *const portf;
 #endif
 } /* namespace gpio */
 
