@@ -8,12 +8,7 @@
 #ifndef PORT_H_
 #define PORT_H_
 
-#ifdef USE_FULL_LL_DRIVER
-#include "stm32f0xx_ll_gpio.h"
-#include "stm32f0xx_ll_bus.h"
-#elif USE_HAL_DRIVER
-#include "stm32f0xx_hal_gpio.h"
-#endif
+#include "drivers_include.h"
 
 #ifdef USE_STREAM
 #include "stream.h"
@@ -26,6 +21,7 @@
 #define gpioe porte
 #define gpiof portf
 
+
 namespace gpio
 {
   /*
@@ -36,7 +32,7 @@ namespace gpio
   public:
     port(GPIO_TypeDef *GPIOx): _port(GPIOx){};
     void init(void) const;
-    inline GPIO_TypeDef *getPort(void) const {return _port;};
+    inline GPIO_TypeDef* getPort(void) const {return _port;};
   private:
     mutable GPIO_TypeDef *_port;
     mutable uint32_t _used = 0;

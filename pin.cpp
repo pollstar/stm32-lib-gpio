@@ -19,7 +19,6 @@ namespace gpio
   }
   void pin::init(LL_GPIO_InitTypeDef *GPIO_InitStruct)
   {
-    GPIO_InitStruct->Pin = _pin;
 #ifdef USE_FULL_LL_DRIVER
     LL_GPIO_Init(_port->getPort(), GPIO_InitStruct);
 #elif USE_HAL_DRIVER
@@ -61,7 +60,7 @@ namespace gpio
 #endif
   }
 
-//#if defined(USE_STREAM)
+#if defined(USE_STREAM)
   com::ostream& operator << (com::ostream& out, gpio::pin& pin)
   {
     int i = (int)pin.getpin();
@@ -77,7 +76,7 @@ namespace gpio
     out << (*pin.getport()) << "." << n;
     return out;
   }
-//#endif
+#endif
 
   bool
   pin::operator != (gpio::pin &pin)

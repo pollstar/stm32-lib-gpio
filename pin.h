@@ -10,6 +10,16 @@
 
 #include "port.h"
 
+#if defined (USE_FULL_LL_DRIVER)
+  #if defined (STM32H7xx)
+    #include "stm32h7xx_ll_gpio.h"
+  #else
+    #error Need add LL libs GPIO
+  #endif
+#elif USE_HAL_DRIVER
+  #error Need add HAL libs GPIO
+#endif
+
 namespace gpio
 {
   enum state

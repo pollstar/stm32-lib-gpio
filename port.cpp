@@ -33,22 +33,58 @@ namespace gpio
     if (_used == 0)
     {
 #ifdef USE_FULL_LL_DRIVER
-	if (_port == GPIOA) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+    if (_port == GPIOA)
+  #if defined (STM32H7xx)
+    LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOA);
+  #else
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
+  #endif
+
 #ifdef GPIOB
-	else if (_port == GPIOB) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
+      else if (_port == GPIOB)
+  #if defined (STM32H7xx)
+    LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOB);
+  #else
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOB);
+  #endif
 #endif
+
 #ifdef GPIOC
-	else if (_port == GPIOC) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOC);
+    else if (_port == GPIOC)
+  #if defined (STM32H7xx)
+    LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOC);
+  #else
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOC);
+  #endif
 #endif
+
 #ifdef GPIOD
-	else if (_port == GPIOD) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOD);
+    else if (_port == GPIOD)
+  #if defined (STM32H7xx)
+    LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOD);
+  #else
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOD);
+  #endif
 #endif
+
 #ifdef GPIOE
-	else if (_port == GPIOE) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOE);
+    else if (_port == GPIOE)
+  #if defined (STM32H7xx)
+    LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOE);
+  #else
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOE);
+  #endif
 #endif
+
 #ifdef GPIOF
-	else if (_port == GPIOF) LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOF);
+    else if (_port == GPIOF)
+  #if defined (STM32H7xx)
+    LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOF);
+  #else
+    LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOF);
+  #endif
 #endif
+
 #elif USE_HAL_DRIVER
   #error Need to implement the init method
 #else
