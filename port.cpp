@@ -9,22 +9,22 @@
 
 namespace gpio
 {
-#ifdef GPIOA
+#if defined(GPIOA)
   gpio::port *const gpioa = new gpio::port(GPIOA);
 #endif
-#ifdef GPIOB
+#if defined(GPIOB)
   gpio::port *const gpiob = new gpio::port(GPIOB);
 #endif
-#ifdef GPIOC
+#if defined(GPIOC)
   gpio::port *const gpioc = new gpio::port(GPIOC);
 #endif
-#ifdef GPIOD
+#if defined(GPIOD)
   gpio::port *const gpiod = new gpio::port(GPIOD);
 #endif
-#ifdef GPIOE
+#if defined(GPIOE)
   gpio::port *const gpioe = new gpio::port(GPIOE);
 #endif
-#ifdef GPIOF
+#if defined(GPIOF)
   gpio::port *const gpiof = new gpio::port(GPIOF);
 #endif
 
@@ -32,7 +32,7 @@ namespace gpio
   {
     if (_used == 0)
     {
-#ifdef USE_FULL_LL_DRIVER
+#if defined (USE_FULL_LL_DRIVER)
     if (_port == GPIOA)
   #if defined (STM32H7xx)
     LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOA);
@@ -40,7 +40,7 @@ namespace gpio
     LL_AHB1_GRP1_EnableClock(LL_AHB1_GRP1_PERIPH_GPIOA);
   #endif
 
-#ifdef GPIOB
+#if defined (GPIOB)
       else if (_port == GPIOB)
   #if defined (STM32H7xx)
     LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOB);
@@ -49,7 +49,7 @@ namespace gpio
   #endif
 #endif
 
-#ifdef GPIOC
+#if defined(GPIOC)
     else if (_port == GPIOC)
   #if defined (STM32H7xx)
     LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOC);
@@ -58,7 +58,7 @@ namespace gpio
   #endif
 #endif
 
-#ifdef GPIOD
+#if defined (GPIOD)
     else if (_port == GPIOD)
   #if defined (STM32H7xx)
     LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOD);
@@ -67,7 +67,7 @@ namespace gpio
   #endif
 #endif
 
-#ifdef GPIOE
+#if defined (GPIOE)
     else if (_port == GPIOE)
   #if defined (STM32H7xx)
     LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOE);
@@ -76,7 +76,7 @@ namespace gpio
   #endif
 #endif
 
-#ifdef GPIOF
+#if defined (GPIOF)
     else if (_port == GPIOF)
   #if defined (STM32H7xx)
     LL_AHB4_GRP1_EnableClock(LL_AHB4_GRP1_PERIPH_GPIOF);
@@ -85,7 +85,7 @@ namespace gpio
   #endif
 #endif
 
-#elif USE_HAL_DRIVER
+#elif  defined (USE_HAL_DRIVER)
   #error Need to implement the init method
 #else
   #error Need to implement the init method
@@ -95,7 +95,7 @@ namespace gpio
     _used++;
   }
 
-#ifdef USE_STREAM
+#if defined (USE_STREAM)
   com::ostream& operator << (com::ostream& out, gpio::port& port)
   {
     out << "GPIO";
@@ -103,19 +103,19 @@ namespace gpio
     char portname = ' ';
 
       if (port.getPort() == GPIOA) portname = 'A';
-    #ifdef GPIOB
+    #if defined (GPIOB)
       else if (port.getPort() == GPIOB) portname = 'B';
     #endif
-    #ifdef GPIOC
+    #if defined (GPIOC)
       else if (port.getPort() == GPIOC) portname = 'C';
     #endif
-    #ifdef GPIOD
+    #if defined (GPIOD)
       else if (port.getPort() == GPIOD) portname = 'D';
     #endif
-    #ifdef GPIOE
+    #if defined (GPIOE)
       else if (port.getPort() == GPIOE) portname = 'E';
     #endif
-    #ifdef GPIOF
+    #if defined (GPIOF)
       else if (port.getPort() == GPIOF) portname = 'F';
     #endif
 

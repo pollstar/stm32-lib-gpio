@@ -17,21 +17,25 @@ namespace gpio
   pin::~pin ()
   {
   }
+
+#if defined (USE_FULL_LL_DRIVER)
   void pin::init(LL_GPIO_InitTypeDef *GPIO_InitStruct)
   {
-#ifdef USE_FULL_LL_DRIVER
     LL_GPIO_Init(_port->getPort(), GPIO_InitStruct);
-#elif USE_HAL_DRIVER
+  }
+#elif defined (USE_HAL_DRIVER)
+  void init (GPIO_InitTypeDef *GPIO_InitStruct);
+  {
     GPIO_Init(_port->getPort(), GPIO_InitStruct);
+  }
 #else
   #error Need to implement the init method
 #endif
-  }
 
   void pin::set (void) const
   {
-#ifdef USE_FULL_LL_DRIVER
-#elif USE_HAL_DRIVER
+#if defined (USE_FULL_LL_DRIVER)
+#elif defined (USE_HAL_DRIVER)
     HAL_GPIO_WritePin(_port->getPort (), _pin, GPIO_PIN_SET);
 #else
   #error Need to implement the init method
@@ -40,8 +44,8 @@ namespace gpio
 
   void pin::reset (void) const
   {
-#ifdef USE_FULL_LL_DRIVER
-#elif USE_HAL_DRIVER
+#if defined (USE_FULL_LL_DRIVER)
+#elif defined (USE_HAL_DRIVER)
     HAL_GPIO_WritePin(_port->getPort (), _pin, GPIO_PIN_RESET);
 #else
   #error Need to implement the init method
@@ -50,9 +54,9 @@ namespace gpio
 
   gpio::state  pin::get (void)
   {
-#ifdef USE_FULL_LL_DRIVER
+#if  defined (USE_FULL_LL_DRIVER)
     return LOW;
-#elif USE_HAL_DRIVER
+#elif defined (USE_HAL_DRIVER)
     GPIO_PinState state = HAL_GPIO_ReadPin (_port->getPort (), _pin);
     return state == GPIO_PIN_SET ? gpio::state::HIGH, gpio::state::LOW;
 #else
@@ -60,7 +64,7 @@ namespace gpio
 #endif
   }
 
-#if defined(USE_STREAM)
+#if defined (USE_STREAM)
   com::ostream& operator << (com::ostream& out, gpio::pin& pin)
   {
     int i = (int)pin.getpin();

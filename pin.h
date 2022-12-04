@@ -16,7 +16,7 @@
   #else
     #error Need add LL libs GPIO
   #endif
-#elif USE_HAL_DRIVER
+#elif defined (USE_HAL_DRIVER)
   #error Need add HAL libs GPIO
 #endif
 
@@ -44,11 +44,11 @@ namespace gpio
   const uint32_t pin14 = ((uint16_t)0x4000U);
   const uint32_t pin15 = ((uint16_t)0x8000U);
 
-#ifdef USE_FULL_LL_DRIVER
+#if defined (USE_FULL_LL_DRIVER)
   const uint32_t speed_low = LL_GPIO_SPEED_FREQ_LOW;
   const uint32_t speed_medium = LL_GPIO_SPEED_FREQ_MEDIUM;
   const uint32_t speed_high = LL_GPIO_SPEED_FREQ_HIGH;
-#elif USE_HAL_DRIVER
+#elif defined (USE_HAL_DRIVER)
   const uint32_t speed_low = GPIO_SPEED_FREQ_LOW;
   const uint32_t speed_medium = GPIO_SPEED_FREQ_MEDIUM;
   const uint32_t speed_high = GPIO_SPEED_FREQ_HIGH;
@@ -66,9 +66,9 @@ namespace gpio
     pin (gpio::port * const port, uint32_t pin);
 
     virtual ~pin ();
-#ifdef USE_FULL_LL_DRIVER
+#if defined (USE_FULL_LL_DRIVER)
     void init (LL_GPIO_InitTypeDef *GPIO_InitStruct);
-#elif USE_HAL_DRIVER
+#elif defined (USE_HAL_DRIVER)
     void init (GPIO_InitTypeDef *GPIO_InitStruct);
 #else
   #error Need to implement the init method
@@ -91,7 +91,7 @@ namespace gpio
     gpio::port *const _port;
     uint32_t _pin;
 
-#ifdef USE_STREAM
+#if defined (USE_STREAM)
     friend com::ostream& operator << (com::ostream& out, gpio::pin& pin);
 #endif
   };

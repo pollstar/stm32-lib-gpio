@@ -9,8 +9,9 @@
 #define PORT_H_
 
 #include "drivers_include.h"
+#include <stdint.h>
 
-#ifdef USE_STREAM
+#if defined (USE_STREAM)
 #include "stream.h"
 #endif
 
@@ -42,22 +43,22 @@ namespace gpio
 #endif
   };
 
-#ifdef GPIOA
+#if defined (GPIOA)
   extern gpio::port *const porta;
 #endif
-#ifdef GPIOB
+#if defined (GPIOB)
   extern gpio::port *const portb;
 #endif
-#ifdef GPIOC
+#if defined (GPIOC)
   extern gpio::port *const portc;
 #endif
-#ifdef GPIOD
+#if defined (GPIOD)
   extern gpio::port *const portd;
 #endif
-#ifdef GPIOE
+#if defined (GPIOE)
   extern gpio::port *const porte;
 #endif
-#ifdef GPIOF
+#if defined (GPIOF)
   extern gpio::port *const portf;
 #endif
 } /* namespace gpio */
